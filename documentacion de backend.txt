@@ -1,0 +1,615 @@
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: API Documentation
+  description: API documentation for the provided PHP code
+paths:
+  /api:
+    get:
+      summary: Get API information
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              example: { message: 'API Information', version: '1.0.0' }
+
+  /api/incidencias:
+    get:
+      summary: Get all incidencias
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              example: { incidencias: [...] }
+
+    post:
+      summary: Create a new incidencia
+      requestBody:
+        required: true
+        content:
+          application/json:
+            example: { asunto: '...', descripcion: '...', prioridad: 1, estado: '...', Personaid: 1, Departamentoid: 1 }
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              example: { success: true, message: 'Incidencia created successfully' }
+
+  /api/incidencias/{id}:
+    get:
+      summary: Get incidencia by ID
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              example: { id: 1, asunto: '...', descripcion: '...', prioridad: 1, estado: '...', Personaid: 1, Departamentoid: 1 }
+
+    put:
+      summary: Update incidencia by ID
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            example: { asunto: '...', descripcion: '...', prioridad: 1, estado: '...', Personaid: 1, Departamentoid: 1 }
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              example: { success: true, message: 'Incidencia updated successfully' }
+
+    delete:
+      summary: Delete incidencia by ID
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              example: { success: true, message: 'Incidencia deleted successfully' }
+
+  /api/personas:
+    get:
+      summary: Get all personas
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              example: { personas: [...] }
+
+    post:
+      summary: Create a new persona
+      requestBody:
+        required: true
+        content:
+          application/json:
+            example: { nombre: '...', apellidos: '...', telefono: '...', Rolid: 1, Departamentoid: 1, Empresaid: 1 }
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              example: { success: true, message: 'Persona created successfully' }
+
+  /api/personas/{id}:
+    get:
+      summary: Get persona by ID
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              example: { id: 1, nombre: '...', apellidos: '...', telefono: '...', Rolid: 1, Departamentoid: 1, Empresaid: 1 }
+
+    put:
+      summary: Update persona by ID
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            example: { nombre: '...', apellidos: '...', telefono: '...', Rolid: 1, Departamentoid: 1, Empresaid: 1 }
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              example: { success: true, message: 'Persona updated successfully' }
+
+    delete:
+      summary: Delete persona by ID
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              example: { success: true, message: 'Persona deleted successfully' }
+
+  /api/roles:
+    get:
+      summary: Get all roles
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              example: { roles: [...] }
+
+    post:
+      summary: Create a new role
+      requestBody:
+        required: true
+        content:
+          application/json:
+            example: { nombre: 'Role Name' }
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              example: { success: true, message: 'Role created successfully' }
+
+  /api/roles/{id}:
+    get:
+      summary: Get role by ID
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              example: { id: 1, nombre: 'Role Name' }
+
+    put:
+      summary: Update role by ID
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            example: { nombre: 'New Role Name' }
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              example: { success: true, message: 'Role updated successfully' }
+
+    delete:
+      summary: Delete role by ID
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              example: { success: true, message: 'Role deleted successfully' }
+
+  /api/departamentos:
+    get:
+      summary: Get all departments
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              example: { departamentos: [...] }
+
+    post:
+      summary: Create a new department
+      requestBody:
+        required: true
+        content:
+          application/json:
+            example: { nombre: 'Department Name' }
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              example: { success: true, message: 'Department created successfully' }
+
+  /api/departamentos/{id}:
+    get:
+      summary: Get department by ID
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              example: { id: 1, nombre: 'Department Name' }
+
+    put:
+      summary: Update department by ID
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            example: { nombre: 'New Department Name' }
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              example: { success: true, message: 'Department updated successfully' }
+
+    delete:
+      summary: Delete department by ID
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              example: { success: true, message: 'Department deleted successfully' }
+
+  /api/empresas:
+    get:
+      summary: Get all companies
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              example: { empresas: [...] }
+
+    post:
+      summary: Create a new company
+      requestBody:
+        required: true
+        content:
+          application/json:
+            example: { nombre: 'Company Name', direccion: 'Company Address' }
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              example: { success: true, message: 'Company created successfully' }
+
+  /api/empresas/{id}:
+    get:
+      summary: Get company by ID
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              example: { id: 1, nombre: 'Company Name', direccion: 'Company Address' }
+
+    put:
+      summary: Update company by ID
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            example: { nombre: 'New Company Name', direccion: 'New Company Address' }
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              example: { success: true, message: 'Company updated successfully' }
+
+    delete:
+      summary: Delete company by ID
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              example: { success: true, message: 'Company deleted successfully' }
+
+  /api/multimedia:
+    get:
+      summary: Get all multimedia
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              example: { multimedia: [...] }
+
+    post:
+      summary: Create new multimedia
+      requestBody:
+        required: true
+        content:
+          application/json:
+            example: { nombre: 'Multimedia Name', tipo: 'Image', url: 'http://example.com/image.jpg' }
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              example: { success: true, message: 'Multimedia created successfully' }
+
+  /api/multimedia/{id}:
+    get:
+      summary: Get multimedia by ID
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              example: { id: 1, nombre: 'Multimedia Name', tipo: 'Image', url: 'http://example.com/image.jpg' }
+
+    put:
+      summary: Update multimedia by ID
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            example: { nombre: 'New Multimedia Name', tipo: 'Video', url: 'http://example.com/video.mp4' }
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              example: { success: true, message: 'Multimedia updated successfully' }
+
+    delete:
+      summary: Delete multimedia by ID
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              example: { success: true, message: 'Multimedia deleted successfully' }
+
+  /api/logins:
+    get:
+      summary: Get all logins
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              example: { logins: [...] }
+
+    post:
+      summary: Create a new login
+      requestBody:
+        required: true
+        content:
+          application/json:
+            example: { usuario: 'username', contrasena: 'password', persona_id: 1 }
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              example: { success: true, message: 'Login created successfully' }
+
+  /api/logins/{id}:
+    get:
+      summary: Get login by ID
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              example: { id: 1, usuario: 'username', contrasena: 'password', persona_id: 1 }
+
+    put:
+      summary: Update login by ID
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            example: { usuario: 'new_username', contrasena: 'new_password', persona_id: 1 }
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              example: { success: true, message: 'Login updated successfully' }
+
+    delete:
+      summary: Delete login by ID
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              example: { success: true, message: 'Login deleted successfully' }
+
+  /api/metodos_pago:
+    get:
+      summary: Get all payment methods
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              example: { metodos_pago: [...] }
+
+    post:
+      summary: Create a new payment method
+      requestBody:
+        required: true
+        content:
+          application/json:
+            example: { nombre: 'Payment Method Name' }
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              example: { success: true, message: 'Payment method created successfully' }
+
+  /api/metodos_pago/{id}:
+    get:
+      summary: Get payment method by ID
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              example: { id: 1, nombre: 'Payment Method Name' }
+
+    put:
+      summary: Update payment method by ID
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            example: { nombre: 'New Payment Method Name' }
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              example: { success: true, message: 'Payment method updated successfully' }
+
+    delete:
+      summary: Delete payment method by ID
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              example: { success: true, message: 'Payment method deleted successfully' }
